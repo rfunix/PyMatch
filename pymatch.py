@@ -3,8 +3,6 @@
 
 import optparse
 import sys
-import re
-import pprint
 from Engine.searchs import extractGroupsText
 
 sys.path.insert(0, '..')
