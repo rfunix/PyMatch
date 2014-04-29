@@ -4,7 +4,7 @@ pyMatch is designed to help you generate formatted and valid outputs, in a simpl
 He uses Regex to collate and validate data, and then you can use the captured groups to generate a formatted output as well want to.
 
 ## Screenshots
-![](http://i60.tinypic.com/i44uw5.png)
+![](http://i57.tinypic.com/11177lw.jpg)
 
 ## Installation
 
