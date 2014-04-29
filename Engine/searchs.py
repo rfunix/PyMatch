@@ -2,7 +2,12 @@
 import re
 
 def extractGroupsText(**kwargs):
-	text = "".join(kwargs["stdin"])	#join text stdin
+	if  kwargs["stdin"]:
+		text = "".join(kwargs["stdin"])	#join text stdin
+	else:
+		file = open(kwargs["file"], "r")
+		text = "".join(file.readlines())
+
 	regex = re.compile("(?m)(?s){0}".format(kwargs["pattern"])) #compile pattern
 	for match in regex.finditer(text): #for each match in text
 		outText = kwargs["groupMatch"] #text output equal --groupMatch

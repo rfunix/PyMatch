@@ -9,24 +9,11 @@ from Engine.searchs import extractGroupsText
 
 sys.path.insert(0, '..')
 
-def groupMatchOut(**kwargs):
-    #groupMatch = "(1)teste(2)"
-    if kwargs["groupMatch"]:
-        i=0
-        listGroups = []
-        #TESTANDO CONTADOR DE GRUPOS
-        while(i <= 9):
-            reg = re.compile(r"(?<=[^\\])\({0}\)".format(i)) #Verify groups
-            if reg.search(kwargs["groupMatch"]):
-                listGroups.append(i)
-            i +=1
-        print listGroups
-      
-    
 def printHelpMessage():
     print """
 Options:
   -h, --help                      show this help message and exit
+  -f, --file                         search groupMatche in File
   -p, --pattern     <pattern>     pattern to find
   -g, --groupmatch  <groupmatchs> combine text with groupmatchs
   --update                        upgrade to latest version
@@ -36,16 +23,18 @@ Options:
 
 def basicInfo():
      print """
-            pyout - auxiliary tool  |  Developed by Relax Lab
+            pyout - Text Output Tool  |  Developed by Relax Lab
               \n    Rafael Francischini (Programmer) - @rfunix\n
-              Usage: pyout.py  [-p/--pattern    <pattern>    ]
-                               [-g/--groupmatch <groupmatchs>]
-                               [--update   Update from github]
-                               [Observation:    stdin works  ]
+              Usage: pyout.py  
+                           [-p/--pattern    <pattern>    ]
+                           [-g/--groupmatch <groupmatchs>]
+                           [-f/--file <file>]
+                           [--update   Update from github]
+                           [Observation:    stdin works  ]
                                
       \n              Get basic options and Help, use: -h\--help
               """
-    
+
 def createOptions():
     kwargs = {}
     if not sys.stdin.isatty():
@@ -57,7 +46,10 @@ def createOptions():
     
     parser.add_option("-p", "--pattern", dest="pattern", type="string",
                                         help="pattern to find",)
-                                        
+
+    parser.add_option("-f", "--file", dest="file", type="string",
+                                        help="search GroupMatches in File",)
+    
     parser.add_option("--update", dest="update", action="store_true", \
                                         help="update to latest version",)
     
@@ -70,26 +62,32 @@ def createOptions():
    
     options, args = parser.parse_args()
     
-    kwargs["groupMatch"] = options.groupMatch
-    kwargs["pattern"] = options.pattern
-    
-    help = options.help
-    
-    if help:
-       printHelpMessage()
-       return
-   
-    if (kwargs["groupMatch"] == None or
-        kwargs["stdin"]  == None or
-        kwargs["pattern"] == None):
-             print basicInfo()
+    try:
+          kwargs["groupMatch"] = options.groupMatch
+          kwargs["pattern"] = options.pattern
+          kwargs["file"] = options.file
+          
+          help = options.help
+          
+          if help:
+             printHelpMessage()
              return
-
-
-    groups = extractGroupsText(**kwargs)
+        
+          if (kwargs["groupMatch"] == None or
+                kwargs["pattern"] == None or
+                (kwargs["file"]) == None and
+                kwargs["stdin"] == None):
+                    basicInfo()
+                    return
+      
+          groups = extractGroupsText(**kwargs)
+    except Exception, e:
+     basicInfo()
+     return
+    
     
 def main():
-    createOptions()    
+    createOptions()
   
 if __name__ == "__main__":
     main()
