@@ -52,11 +52,7 @@ def createOptions():
         kwargs["stdin"] = sys.stdin.readlines()
     else:
         kwargs["stdin"] = None
-        
-#    data = sys.stdin.readlines()
-#    if data:
-#        print data
-        
+              
     parser = optparse.OptionParser(add_help_option=False)
     
     parser.add_option("-p", "--pattern", dest="pattern", type="string",
@@ -77,30 +73,23 @@ def createOptions():
     kwargs["groupMatch"] = options.groupMatch
     kwargs["pattern"] = options.pattern
     
-    if kwargs["stdin"] == None:
-      print "Invalid value in stdin"
-      return
-
-
     help = options.help
     
     if help:
        printHelpMessage()
        return
    
-    # if (kwargs["groupMatch"] == None or
-    #     kwargs["stdin"]  == None or
-    #     kwargs["pattern"] == None):
-    #         print basicInfo()
-    #         return
+    if (kwargs["groupMatch"] == None or
+        kwargs["stdin"]  == None or
+        kwargs["pattern"] == None):
+             print basicInfo()
+             return
 
 
     groups = extractGroupsText(**kwargs)
     
 def main():
     createOptions()    
-
-
-    
+  
 if __name__ == "__main__":
     main()
