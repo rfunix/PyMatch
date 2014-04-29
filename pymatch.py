@@ -7,6 +7,20 @@ import pprint
 from Engine.searchs import extractGroupsText
 
 
+def basicInfo():
+    print """
+            pyout - Text Output Tool  |  Developed by Relax Lab
+              \n    Rafael Francischini (Programmer) - @rfunix\n
+              Usage: pyout.py
+                           [-p/--pattern    <pattern>    ]
+                           [-g/--groupmatch <groupmatchs>]
+                           [-f/--file <file>]
+                           [--update   Update from github]
+                           [Observation:    stdin works  ]
+
+      \n              Get basic options and Help, use: -h\--help
+              """
+              
 def main():
     kwargs = {}
     if not sys.stdin.isatty():
