@@ -69,10 +69,8 @@ def main():
             printHelpMessage()
             return
 
-        if (kwargs["groupMatch"] == None or
-                kwargs["pattern"] == None or
-                (kwargs["file"]) == None and
-                kwargs["stdin"] == None):
+        if kwargs["groupMatch"] is None or kwargs["pattern"] is None or\
+                (kwargs["file"] is None and kwargs["stdin"] is None):
             basicInfo()
             return
 
