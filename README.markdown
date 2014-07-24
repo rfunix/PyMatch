@@ -1,4 +1,4 @@
-# PyMatch - Output auxiliary tool
+# PyMatch - Output Regex auxiliary tool
 
 pyMatch is designed to help you generate formatted and valid outputs, in a simple way. 
 He uses Regex to collate and validate data, and then you can use the captured groups to generate a formatted output as well want to.
