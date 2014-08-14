@@ -37,4 +37,11 @@ Examples of use:
     To use the groups obtained in the use Regex -g (Group number).
     
     python pymatch.py -f "teste.txt" -p "^(011)(\d{4,5})(\d{4})$" -g "((1))(2)-(3)"
+    
+    cat teste.txt | python pymatch.py -p "^(011)(\d{4,5})(\d{4})$" -g "((1))(2)-(3)"
+    
+    
+PyMatch is program is free software; you may redistribute and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; Version 2 with the clarifications and exceptions described in the license file. This guarantees your right to use, modify, and redistribute this software under certain conditions. If you wish to embed PyMatch technology into proprietary software, we sell alternative licenses (contact rafinha.unix@gmail.com).
+
+PyMatch is free software, keeping the picture can USE AND ABUSE
 
